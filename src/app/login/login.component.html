@@ -10,7 +10,7 @@
         <div *ngIf="!validUsername && username.touched">
             <div class="danger">The username is not recognized</div>
         </div>
-        <div *ngIf="technicalIssue && username.touched">
+        <div *ngIf="technicalIssue">
             <div class="danger">Oops! There's some network error. Please try again later.</div>
         </div>
     </div>

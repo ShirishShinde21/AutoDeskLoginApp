@@ -59,6 +59,9 @@
             <div class="danger" *ngIf="registrationForm.errors?.mismatch && confirmPassword.dirty">Password mismatch</div>
             
         </div>
+        <div *ngIf="technicalIssue">
+            <div class="danger">Oops! There's some network error. Please try again later.</div>
+        </div>
     </div>
 </div>
     <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary col-12 formButton" (click)="RegisterUser()">Create account</button>

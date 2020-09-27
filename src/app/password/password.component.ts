@@ -4,7 +4,7 @@ import {Router,ActivatedRoute, ParamMap} from '@angular/router';
 import {LoginService} from '../Services/login.service';
 import {LocalstorageService} from '../Services/localstorage.service';
 import { WhiteSpaceValidator } from '../CustomValidations/whitespace.validator';
-import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-password',
@@ -14,11 +14,12 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class PasswordComponent implements OnInit {
   public username;
   public invalidCredentials=false;
+  public technicalIssue:boolean=false;
   get password(){
     return this.passwordForm.get('password');
   }
 
-  constructor(private router:Router, private route:ActivatedRoute, private fb: FormBuilder,private loginService:LoginService, private local:LocalstorageService,private spinner:NgxSpinnerService) { }
+  constructor(private router:Router, private route:ActivatedRoute, private fb: FormBuilder,private loginService:LoginService, private local:LocalstorageService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param:ParamMap)=>{
@@ -40,7 +41,6 @@ export class PasswordComponent implements OnInit {
   });
 
   SignIn(){
-    this.spinner.show();
     this.loginService.password=this.password.value;
     this.loginService.username= this.username;
     this.loginService.GeUser(this.username,this.password.value).subscribe(response=>{
@@ -48,31 +48,16 @@ export class PasswordComponent implements OnInit {
         this.invalidCredentials=false;
         this.local.removeKey('username');
         this.local.setWithExpiry('username',this.username);
-        this.spinner.hide();
         this.router.navigate(['dashboard'])
       }
       else{
         this.invalidCredentials=true;
-        this.spinner.hide();
       }
     },(error)=>{
-      this.spinner.hide();
+      this.technicalIssue=true;
+      console.log("Error occured",error);
     });
-   /* this.loginService.GetUser().subscribe(response=>{
-      
-      if(response.userPassword == this.loginService.password){
-        this.invalidCredentials=false;
-        this.local.removeKey('username');
-        this.local.setWithExpiry('username',response.username);
-        this.router.navigate(['dashboard'])
-      }
-
-      else{
-        this.invalidCredentials=true;
-      }
-    
-    });
-    */
+   
   }
 
  
