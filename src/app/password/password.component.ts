@@ -41,8 +41,8 @@ export class PasswordComponent implements OnInit {
   });
 
   SignIn(){
-    this.loginService.password=this.password.value;
-    this.loginService.username= this.username;
+    //this.loginService.password=this.password.value;
+    //this.loginService.username= this.username;
     this.loginService.GeUser(this.username,this.password.value).subscribe(response=>{
       if(response){
         this.invalidCredentials=false;

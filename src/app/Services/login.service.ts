@@ -9,8 +9,6 @@ import {HttpClient, HttpParams,HttpHeaders, HttpErrorResponse} from '@angular/co
 })
 export class LoginService {
 
-  username:string;
-  password:string;
   user:AutodeskUser=new AutodeskUser();
   readonly apiURL="https://localhost:44345/api/AutodeskUser"
   constructor(private http:HttpClient) { }

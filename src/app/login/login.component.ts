@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
 
   ValidateUsername(){
     
-    this.loginService.username = this.username.value;
     this.loginService.VerifyUsername(this.username.value).subscribe(response=>{
       this.technicalIssue=false;
       if(response){
