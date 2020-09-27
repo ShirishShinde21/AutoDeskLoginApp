@@ -10,11 +10,18 @@
         <div *ngIf="!validUsername && username.touched">
             <div class="danger">The username is not recognized</div>
         </div>
+        <div *ngIf="technicalIssue && username.touched">
+            <div class="danger">Oops! There's some network error. Please try again later.</div>
+        </div>
     </div>
     <button  type="submit" [disabled]="!loginForm.valid" class="btn btn-primary col-12 formButton" (click)="ValidateUsername()">Next</button>
     <p class="text-center bottomText" style="color:#808080">New to Autodesk? <a routerLink="/registration" class="hyperlink">Create Account</a></p>
 
 </form>
 </div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: white">Please Wait</p>  
+</ngx-spinner>
 
 
