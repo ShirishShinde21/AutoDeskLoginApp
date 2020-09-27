@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+.footer{
+    width: 100%;
+    float: left;
+    /*position: absolute;
+    bottom: 10px;*/
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 32px;
+}
+
+.headerMessage{
+    margin-top: 48px;
+    font-size: 22px;
+    line-height: 28px;
+    color:#000000;
+    margin-bottom: 0px !important;
+}
+
+.formcontrol{
+    font-size: 16px;
+    line-height: 22px;
+    color: #3c3c3c;
+    font-weight: 100;
+}
+
+.formControlLabel{
+    margin-bottom: 0px !important;
+}
+
+.formControlInput{
+    margin-top: 8px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    
+}
+
+.fromGroupLast{
+    margin-bottom: 12px !important;
+}
+
+.formButton{
+    font-size: 16px;
+    line-height: 22px;
+    color:#ffffff;
+    padding-top:8px !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px;
+    height: 38px;
+    background: #0696d7;
+    border-radius: 4px;
+}
+
+.FormDiv{
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+.centered{
+width: 40%;
+margin: auto;
+}
+
+.hyperlink{
+    color:#006eaf;
+}
+
+.is-invalid{
+border-color:  #ee4444 !important;
+}
+
+.danger{
+    background-color:#dcdcdc ;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    padding:6px;
+    color:#666666;
+}
+
+.bottomText{
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.form-group{
+    margin-bottom: 16px ;
+}

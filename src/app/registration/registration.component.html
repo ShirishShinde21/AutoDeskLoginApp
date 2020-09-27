@@ -1,0 +1,74 @@
+<div class="centered">
+<h3 class="headerMessage">Create Account</h3>
+<form [formGroup]="registrationForm" autocomplete="off">
+    <div class="FormDiv">
+    <div class="row">
+    
+    <div class="form-group  col-6">
+        <label class="formcontrol formControlLabel">First name</label>
+        <input formControlName="firstName" class="form-control formcontrol formControlInput" [class.is-invalid]="firstName.invalid && firstName.touched">
+        <div *ngIf="firstName.invalid && firstName.touched">
+            <div class="danger">Please enter your first name</div>
+        </div>
+    </div>
+
+    <div class="form-group col-6">
+        <label class="formcontrol formControlLabel">Last name</label>
+        <input formControlName="lastName" class="form-control formcontrol formControlInput" [class.is-invalid]="lastName.invalid && lastName.touched">
+        <div *ngIf="lastName.invalid && lastName.touched">
+            <div class="danger">Please enter your last name</div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="form-group">
+        <label class="formcontrol formControlLabel">Username</label>
+        <input formControlName="username" class="form-control formcontrol formControlInput" [class.is-invalid]="username.invalid && username.touched">
+        <div *ngIf="username.invalid && username.touched">
+            <div class="danger">Please enter a valid username</div>
+        </div>
+        <div *ngIf="usernameAlreadyExists">
+            <div class="danger">Username already exists</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="formcontrol formControlLabel">Re-type username</label>
+        <input formControlName="confirmUsername" class="form-control formcontrol formControlInput" [class.is-invalid]="confirmUsername.invalid && confirmUsername.touched && registrationForm.errors?.UsernameMismatch">
+        <div *ngIf="registrationForm.errors?.UsernameMismatch && confirmUsername.touched">
+            <div class="danger" *ngIf="confirmUsername.errors?.required">Confirm username <br></div>
+            <div class="danger" *ngIf="registrationForm.errors?.UsernameMismatch && confirmUsername.dirty">Please enter the same username</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="formcontrol formControlLabel">Password</label>
+        <input type="password" formControlName="password" class="form-control formcontrol formControlInput" [class.is-invalid]="password.invalid && password.touched">
+        <div *ngIf="password.invalid && password.touched">
+            <div class="danger" *ngIf="password.errors?.required">Password is required</div>
+            <div class="danger" *ngIf="password.errors?.minlength">Password must be atleast 6 characters long</div>
+        </div>
+    </div>
+
+    <div class="form-group fromGroupLast">
+        <label class="formcontrol formControlLabel">Re-type password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control formcontrol formControlInput" [class.is-invalid]="registrationForm.errors?.mismatch && confirmPassword.invalid && confirmPassword.touched">
+        <div *ngIf="registrationForm.errors?.mismatch && confirmPassword.touched">
+            <div class="danger" *ngIf="confirmPassword.errors?.required">Confirm password <br></div>
+            <div class="danger" *ngIf="registrationForm.errors?.mismatch && confirmPassword.dirty">Password mismatch</div>
+            
+        </div>
+    </div>
+</div>
+    <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary col-12 formButton" (click)="RegisterUser()">Create account</button>
+    <p class="text-center bottomText" style="color:#808080">Already have an account? <a routerLink="/login" class="hyperlink">Sign in</a></p>
+</form>
+</div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: white">Please Wait</p>  
+</ngx-spinner>
+
+
+

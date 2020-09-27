@@ -1,0 +1,20 @@
+<div class="container-fluid centered" >
+    <p class="headerMessage">Sign in</p>
+<form [formGroup]="loginForm" autocomplete="off">
+    <div class="form-group" class="FormDiv">
+        <label  class="formcontrol formControlLabel">Username</label>
+        <input [class.is-invalid]="username.invalid && username.touched" formControlName="username" class="form-control formcontrol formControlInputLast">
+        <div *ngIf="username.invalid && username.touched">
+            <div class="danger">Username is required</div>
+        </div>
+        <div *ngIf="!validUsername && username.touched">
+            <div class="danger">The username is not recognized</div>
+        </div>
+    </div>
+    <button  type="submit" [disabled]="!loginForm.valid" class="btn btn-primary col-12 formButton" (click)="ValidateUsername()">Next</button>
+    <p class="text-center bottomText" style="color:#808080">New to Autodesk? <a routerLink="/registration" class="hyperlink">Create Account</a></p>
+
+</form>
+</div>
+
+
