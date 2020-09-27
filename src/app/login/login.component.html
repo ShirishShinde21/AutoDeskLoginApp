@@ -3,7 +3,7 @@
 <form [formGroup]="loginForm" autocomplete="off">
     <div class="form-group" class="FormDiv">
         <label  class="formcontrol formControlLabel">Username</label>
-        <input [class.is-invalid]="username.invalid && username.touched" formControlName="username" class="form-control formcontrol formControlInputLast">
+        <input [class.is-invalid]="username.invalid && username.touched" formControlName="username" class="form-control formcontrol formControlInput">
         <div *ngIf="username.invalid && username.touched">
             <div class="danger">Username is required</div>
         </div>
