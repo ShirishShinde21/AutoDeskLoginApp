@@ -5,16 +5,16 @@ import {LoginService} from '../Services/login.service';
 import {LocalstorageService} from '../Services/localstorage.service';
 import { WhiteSpaceValidator } from '../CustomValidations/whitespace.validator';
 
-
 @Component({
   selector: 'app-password',
-  templateUrl: './password.component.html',
-  styleUrls: ['./password.component.css']
+  templateUrl: './password.component.html'
 })
 export class PasswordComponent implements OnInit {
-  public username;
-  public invalidCredentials=false;
-  public technicalIssue:boolean=false;
+  
+  username:string;
+  invalidCredentials:boolean=false;
+  technicalIssue:boolean=false;
+
   get password(){
     return this.passwordForm.get('password');
   }
@@ -28,20 +28,16 @@ export class PasswordComponent implements OnInit {
       console.log('Username', this.username);
     });
 
-    if(this.username =="" || this.username ==null){
+    if(this.username.trim().length===0 || this.username ==null){
       this.router.navigate(["/login"]);
     }
-
-
   }
 
   passwordForm = this.fb.group({
     password:['',[Validators.required,WhiteSpaceValidator]]
-
   });
 
   SignIn(){
-
     this.loginService.GeUser(this.username,this.password.value).subscribe(response=>{
       if(response){
         this.invalidCredentials=false;
@@ -52,14 +48,12 @@ export class PasswordComponent implements OnInit {
       else{
         this.invalidCredentials=true;
       }
-    },(error)=>{
+    },
+    (error)=>{
       this.technicalIssue=true;
       console.log("Error occured",error);
     });
-   
   }
-
- 
 }
 
 

@@ -11,7 +11,6 @@ import {NotificationService} from '../app/Services/notification.service';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {LoaderInterceptorService} from './Services/loader-interceptor.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,

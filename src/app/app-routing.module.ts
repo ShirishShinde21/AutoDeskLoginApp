@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'password',component:PasswordComponent},
   {path:'registration',loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule) },
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path:'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
   {path:'**',component:PageNotFoundComponent}
 ];
 
@@ -18,6 +18,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
 export const routingComponents=[LoginComponent,
                                 PasswordComponent,
                                 PageNotFoundComponent]

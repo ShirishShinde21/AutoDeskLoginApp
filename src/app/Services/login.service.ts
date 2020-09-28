@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry} from 'rxjs/operators';
 import {AutodeskUser} from '../Models/User.Model'
-import {HttpClient, HttpParams,HttpHeaders, HttpErrorResponse} from '@angular/common/http'
+import {HttpClient,HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -30,20 +30,16 @@ export class LoginService {
       catchError(this.handleError)
     );
   }
-
   
   GeUser(name:string,pwt:string):Observable<boolean>{
     const headers= new HttpHeaders({
       'username':name,
       'password':pwt
     });
-    //let params=new HttpParams().append('username',name);
-    //params=params.append('password',pwt);
     return this.http.get<boolean>(this.apiURL,{headers:headers}).pipe(
       retry(3),
       catchError(this.handleError)
     );
-    //return this.http.get<AutodeskUser>(this.apiURL+"/"+this.username);
   }
 
   handleError(error:HttpErrorResponse){

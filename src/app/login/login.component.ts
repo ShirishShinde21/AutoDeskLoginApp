@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms'
-import {Router} from '@angular/router'
-import {LoginService} from '../Services/login.service'
-import {WhiteSpaceValidator} from '../CustomValidations/whitespace.validator'
+import {FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {LoginService} from '../Services/login.service';
+import {WhiteSpaceValidator} from '../CustomValidations/whitespace.validator';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
+  
+  validUsername:boolean=true;
+  technicalIssue:boolean=false;
   
   get username(){
     return this.loginForm.get('username');
   }
-
-  public validUsername=true;
-  public technicalIssue=false;
 
   constructor(private fb:FormBuilder,private router:Router,private loginService:LoginService) { }
 
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
   });
 
   ValidateUsername(){
-    
     this.loginService.VerifyUsername(this.username.value).subscribe(response=>{
       this.technicalIssue=false;
       if(response){
@@ -40,16 +38,12 @@ export class LoginComponent implements OnInit {
       else{
         this.validUsername=false;
       }
-    },(error)=>{
-      
+    },
+    (error)=>{     
       console.log("Error occured",error);
       if(error instanceof HttpErrorResponse){
           this.technicalIssue=true;
       }
-
-    });
-    
-    
+    });  
   }
-
 }

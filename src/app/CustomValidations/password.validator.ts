@@ -4,7 +4,6 @@ export function PasswordValidator(control:AbstractControl): {[key:string]:boolea
     
     const password=control.get('password');
     const confirmPassword=control.get('confirmPassword');
-
     return password && confirmPassword && (password.value != confirmPassword.value) ? {'mismatch':true}:null;
 
 };

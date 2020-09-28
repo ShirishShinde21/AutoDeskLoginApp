@@ -4,7 +4,6 @@ export function UsernameValidator(control:AbstractControl): {[key:string]:boolea
     
     const username=control.get('username');
     const confirmUsername=control.get('confirmUsername');
-
     return username && confirmUsername && (username.value != confirmUsername.value) ? {'UsernameMismatch':true}:null;
 
 };
