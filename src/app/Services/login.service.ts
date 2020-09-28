@@ -11,8 +11,8 @@ export class LoginService {
 
   user:AutodeskUser=new AutodeskUser();
   //readonly apiURL="http://localhost:53307/api/AutodeskUser"
-  readonly apiURL="http://autodesk.api.com/api/Autodeskuser";
-
+  readonly apiURL="https://autodesk.api.com/api/Autodeskuser";
+  
   constructor(private http:HttpClient) { }
 
   AddUser(user:AutodeskUser):Observable<AutodeskUser>{
