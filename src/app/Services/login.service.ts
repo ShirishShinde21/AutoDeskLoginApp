@@ -10,8 +10,8 @@ import {HttpClient,HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 export class LoginService {
 
   user:AutodeskUser=new AutodeskUser();
-  readonly apiURL="http://localhost:53307/api/AutodeskUser"
-  //readonly apiURL="http://autodesk.api.com/api/Autodeskuser";
+  //readonly apiURL="http://localhost:53307/api/AutodeskUser"
+  readonly apiURL="http://autodesk.api.com/api/Autodeskuser";
 
   constructor(private http:HttpClient) { }
 
