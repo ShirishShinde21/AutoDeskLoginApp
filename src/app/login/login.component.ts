@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../Services/login.service';
@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
   
   validUsername:boolean=true;
   technicalIssue:boolean=false;
@@ -19,9 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private fb:FormBuilder,private router:Router,private loginService:LoginService) { }
-
-  ngOnInit(): void {
-  }
 
   loginForm = this.fb.group({
     username:['',[Validators.required,WhiteSpaceValidator]]
