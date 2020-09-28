@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
     username:['',[Validators.required,WhiteSpaceValidator]]
-
   });
 
   ValidateUsername(){

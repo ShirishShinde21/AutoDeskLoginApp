@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {Router} from '@angular/router'
 import {LocalstorageService} from '../Services/localstorage.service';
 import {NotificationService} from '../Services/notification.service'
@@ -7,13 +7,9 @@ import {NotificationService} from '../Services/notification.service'
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   
   constructor(private router:Router,private local:LocalstorageService,private notificationService:NotificationService) { }
-
-  ngOnInit(): void {
-
-  }
 
   Logout(){
     this.local.removeKey('username');

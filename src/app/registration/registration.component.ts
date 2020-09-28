@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PasswordValidator} from '../CustomValidations/password.validator';
@@ -12,7 +12,7 @@ import {HttpErrorResponse} from '@angular/common/http';
   selector: 'app-registration',
   templateUrl: './registration.component.html'
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent{
   
   usernameAlreadyExists:boolean=false;
   technicalIssue:boolean=false;
@@ -37,10 +37,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   constructor(private fb:FormBuilder,private router:Router,private loginService:LoginService,private notificationService:NotificationService) { }
-
-  ngOnInit(): void {
-
-  }
 
   registrationForm= this.fb.group(
   {
